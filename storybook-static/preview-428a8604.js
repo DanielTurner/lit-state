@@ -1,0 +1,2 @@
+import{p as o,a as s,b as e,c as t}from"./storybook-preview-29a9784e.js";const c={url:new URL("./.storybook/preview.js",document.baseURI).href};!async function(){const n=await(await fetch(new URL("../custom-elements.json",c.url))).json();o(n),s(e),t({a11y:{config:{},options:{checks:{"color-contrast":{options:{noScroll:!0}}},restoreScroll:!0}},docs:{iframeHeight:"200px"}})}();
+//# sourceMappingURL=preview-428a8604.js.map

@@ -1,0 +1,55 @@
+import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
+
+import '../lit-state.js';
+
+<Meta 
+  title="LitState"
+  parameters={{
+    component: "lit-state",
+    options: { selectedPanel: "storybookjs/knobs/panel" }
+  }}
+/>
+
+# LitState
+
+A component for...
+
+## Features:
+
+- a
+- b
+- ...
+
+## How to use
+
+### Installation
+
+```bash
+yarn add lit-state
+```
+
+```js
+import 'lit-state/lit-state.js';
+```
+
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+      <lit-state></lit-state>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+<Props of="lit-state" />
+
+## Variations
+
+###### Custom Title
+
+<Story name="Custom Title">
+  {html`
+    <lit-state .title=${'Hello World'}></lit-state>
+  `}
+</Story>

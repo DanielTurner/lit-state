@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../lit-state.js';
+
+    render(
+        html`
+        <h1>State Demo</h1>
+        <h2>Controller state</h2>
+        <lit-controller demo id="controller"></lit-controller>
+        <h2>Elements states</h2>
+        <h3>One</h3>
+        <lit-state demo id="one"></lit-state>
+        <h3>Two</h3>
+        <lit-state demo id="two"></lit-state>
+        <h3>Three</h3>
+        <lit-state demo id="three"></lit-state>
+
+        <h2>Set State</h2>
+        <input type="text" id="state1Value">
+          <input type="button" value="Set One" id="oneButton">
+        <hr>
+        <input type="text" id="state2Value">
+          <input type="button" value="Set Two" id="twoButton">
+        <hr>
+        <input type="text" id="state3Value">
+          <input type="button" value="Set Three" id="threeButton">
+        <hr>
+          <input type="button" value="Alter All States" id="alterAllButton">
+      `,
+        document.querySelector('#demo'),
+    );
+
+    document.querySelector('#oneButton').addEventListener('click', () => {
+      document.querySelector('#one').state = {
+        'state1': document.querySelector('#state1Value').value,
+      };
+      document.querySelector('#one').notifyChange('state1',
+          document.querySelector('#state1Value').value);
+    });
+    
+    document.querySelector('#twoButton').addEventListener('click', () => {
+      document.querySelector('#two').state = {
+        'state2': document.querySelector('#state2Value').value,
+      };
+      document.querySelector('#two').notifyChange('state2',
+          document.querySelector('#state2Value').value);
+    });
+    
+    document.querySelector('#threeButton').addEventListener('click', () => {
+      document.querySelector('#three').state = {
+        'state3': document.querySelector('#state3Value').value,
+      };
+      document.querySelector('#three').notifyChange('state3',
+          document.querySelector('#state3Value').value);
+    });
+
+    document.querySelector('#alterAllButton').addEventListener('click', () => {
+      const event = {
+        detail: {
+          'state1': 'This is the first state',
+          'state2': 'This is the second state',
+          'state3': 'This is the third state',
+          'random': 'This is another random state',
+          'object': { 'canBeObject': true },
+        },
+      };
+      document.querySelector('#controller').stateChanged(event);
+    });
+  </script>
+
+</body>
+</html>
