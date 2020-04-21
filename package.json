@@ -1,5 +1,5 @@
 {
-  "name": "lit-state",
+  "name": "@danielturner/lit-state",
   "version": "0.0.1",
   "description": "lit-state a lightweight state management solution",
   "author": "lit-state",
@@ -8,9 +8,11 @@
   "module": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DanielTurner/lit-state"
+    "url": "git+https://github.com/DanielTurner/lit-state.git"
   },
-  "bugs": "https://github.com/DanielTurner/lit-state/issues",
+  "bugs": {
+    "url": "https://github.com/DanielTurner/lit-state/issues"
+  },
   "keywords": [
     "lit",
     "lit-html",
@@ -60,5 +62,6 @@
       "eslint --fix",
       "git add"
     ]
-  }
+  },
+  "homepage": "https://github.com/DanielTurner/lit-state#readme"
 }
