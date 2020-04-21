@@ -42,7 +42,10 @@
       `,
         document.querySelector('#demo'),
     );
-
+    document.querySelector('#one').init({ 'state1': '' });
+    document.querySelector('#two').init({ 'state2': '' });
+    document.querySelector('#three').init({ 'state3': '' });
+    
     document.querySelector('#oneButton').addEventListener('click', () => {
       document.querySelector('#one').state = {
         'state1': document.querySelector('#state1Value').value,
@@ -79,6 +82,8 @@
       };
       document.querySelector('#controller').stateChanged(event);
     });
+
+    
   </script>
 
 </body>

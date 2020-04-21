@@ -65,16 +65,16 @@ export class LitController extends LitElement {
     this.changedTypes = [];
     keys.forEach((key) => {
       if (JSON.stringify(this.state[key]) !== JSON.stringify(tempState[key])) {
-        this.state[key] = tempState[key];
+        this.state[key] = JSON.parse(JSON.stringify(tempState[key]));
         this.changedTypes.push(key);
       }
     });
     if (this.changedTypes && this.changedTypes.length) {
       try {
         localStorage.setItem('state', JSON.stringify(this.state));
-      } catch (e) {
+      } catch (error) {
         // eslint-disable-next-line no-console
-        console.error('Local strage save failed... ', e);
+        console.error('Local storage save failed... ', error);
       }
       this.notifyChange();
     }

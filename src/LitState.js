@@ -1,6 +1,5 @@
-import {
-  LitElement,
-} from 'lit-element';
+import { LitElement } from 'lit-element';
+import { nothing } from 'lit-html';
 
 export * from 'lit-element';
 
@@ -41,6 +40,13 @@ export class LitState extends LitElement {
   }
 
   /**
+   * @param {Object} state
+   */
+  init(state) {
+    this.state = JSON.parse(JSON.stringify(state));
+  }
+
+  /**
    * @param {Event} event
    */
   stateChanged(event) {
@@ -51,7 +57,7 @@ export class LitState extends LitElement {
       if (typeof this.state[key] === 'undefined') return;
       if (JSON.stringify(this.state[key]) === JSON
           .stringify(tempState[key])) return;
-      this.state[key] = tempState[key];
+      this.state[key] = JSON.parse(JSON.stringify(tempState[key]));
       changed = true;
     });
     if (!changed) return;
@@ -71,6 +77,14 @@ export class LitState extends LitElement {
       detail: customObject,
     });
     window.dispatchEvent(event);
+  }
+
+  /**
+   * @return {TemplateResult}
+   */
+  render() {
+    if (!this.demo) return nothing;
+    return JSON.stringify(this.state);
   }
   /* eslint-enable class-methods-use-this */
 }
