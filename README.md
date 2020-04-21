@@ -2,10 +2,9 @@
 
 A lightweight state management with localstorage persistance.
 
-
 ## Installation
 ```bash
-#npm i lit-state
+#npm i @danielturner/lit-state
 
 ```
 
@@ -15,7 +14,8 @@ with LitState for any view that is going to be using or managing state.
 
 Example:
 ```javascript
-import { html, css, LitState} from '../../lit-state/index.js';
+import { css, html } from 'lit-element';
+import { LitState } from '../../lit-state/index.js';
 
 export class TestState extends LitState {
 ```
@@ -64,6 +64,15 @@ State changes can be anything, and any time during your apps lifecycle.
   __increment() {
     this.counter += 1;
     this.notifyChange('counter', this.counter);
+  }
+```
+Or leverage the updated lifecycle.
+```javascript
+  updated(changeProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      console.log(`${propName} changed. oldValue: ${oldValue}`);
+      this.notifyChange(propName, this[propName]);
+    });
   }
 ```
 LitState uses two events

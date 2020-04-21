@@ -1,7 +1,5 @@
 import { LitElement } from 'lit-element';
 
-export * from 'lit-element';
-
 /**
  * @class LitController
  * @extends LitElement

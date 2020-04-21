@@ -1,8 +1,6 @@
 import { LitElement } from 'lit-element';
 import { nothing } from 'lit-html';
 
-export * from 'lit-element';
-
 /**
  * @class LitState
  * @extends LitElement
