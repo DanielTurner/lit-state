@@ -1,5 +1,5 @@
-import { LitState } from './src/LitState.js';
 import { LitController } from './src/LitController.js';
 
-window.customElements.define('lit-state', LitState);
+export { LitState } from './src/LitState.js';
+
 window.customElements.define('lit-controller', LitController);

@@ -46,7 +46,7 @@ export class LitController extends LitElement {
     this.changedTypes = [];
     this.sessionStorage = false;
     const instance = this;
-    this.storage = localStorage;
+    this.storage = window.localStorage;
 
     this.listener = window.addEventListener('stateChangeRequest',
         (event) => {
@@ -58,7 +58,7 @@ export class LitController extends LitElement {
    */
   firstUpdated() {
     if (this.sessionStorage) {
-      this.storage = this.sessionStorage;
+      this.storage = window.sessionStorage;
     }
 
     const savedState = JSON.parse(this.storage.getItem('state'));
