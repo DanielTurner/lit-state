@@ -10,20 +10,29 @@ export class LitController extends LitElement {
    */
   static get properties() {
     return {
-      state: {
-        type: Object,
-      },
-
-      listener: {
-        type: Object,
-      },
-
       changedTypes: {
         type: Array,
       },
 
       demo: {
         type: Boolean,
+      },
+
+      listener: {
+        type: Object,
+      },
+
+
+      state: {
+        type: Object,
+      },
+
+      sessionStorage: {
+        type: Boolean,
+      },
+
+      storage: {
+        type: Object,
       },
     };
   }
@@ -35,21 +44,29 @@ export class LitController extends LitElement {
     this.demo = false;
     this.state = {};
     this.changedTypes = [];
+    this.sessionStorage = false;
     const instance = this;
+    this.storage = localStorage;
+
     this.listener = window.addEventListener('stateChangeRequest',
         (event) => {
           instance.stateChanged(event);
         });
-    const savedState = JSON.parse(localStorage.getItem('state'));
-    if (savedState) {
-      this.state = savedState;
-      this.state = savedState;
-    }
   }
 
   /**
    */
   firstUpdated() {
+    if (this.sessionStorage) {
+      this.storage = this.sessionStorage;
+    }
+
+    const savedState = JSON.parse(this.storage.getItem('state'));
+    if (savedState) {
+      this.state = savedState;
+      this.state = savedState;
+    }
+
     this.changedTypes = Object.keys(this.state);
     this.notifyChange();
   }
@@ -69,7 +86,7 @@ export class LitController extends LitElement {
     });
     if (this.changedTypes && this.changedTypes.length) {
       try {
-        localStorage.setItem('state', JSON.stringify(this.state));
+        this.storage.setItem('state', JSON.stringify(this.state));
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Local storage save failed... ', error);

@@ -10,7 +10,7 @@ A lightweight state management with localstorage persistance.
 
 ## Usage
 After adding lit-state to your application you need to replace LitElement 
-with LitState for any view that is going to be using or managing state.
+with LitState for *ANY* view that is going to be using or managing state.
 
 Example:
 ```javascript
@@ -81,3 +81,12 @@ and
 *stateChangeRequest*
 
 It is not recommended to use these to trigger updates.
+
+## Configuration
+If you want to use sessionStorage instead of localStorage to limit the
+persistence to the session. Simply change the controller element in the render
+method to the following.
+
+```html
+  <lit-controller sessionStorage>
+```
