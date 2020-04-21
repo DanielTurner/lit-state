@@ -1,8 +1,9 @@
 {
   "name": "@danielturner/lit-state",
+  "_spec": "@danielturner/lit-state",
   "version": "0.0.1",
   "description": "lit-state a lightweight state management solution",
-  "author": "lit-state",
+  "author": "Daniel Turner",
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",
