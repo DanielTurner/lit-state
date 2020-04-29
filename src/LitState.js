@@ -11,16 +11,16 @@ export class LitState extends LitElement {
    */
   static get properties() {
     return {
-      state: {
-        type: Object,
-      },
-
-      listener: {
+      callback: {
         type: Object,
       },
 
       demo: {
         type: Boolean,
+      },
+
+      state: {
+        type: Object,
       },
     };
   }
@@ -32,9 +32,24 @@ export class LitState extends LitElement {
     this.demo = false;
     this.state = {};
     const instance = this;
-    this.listener = window.addEventListener('stateChanged', (event) => {
+    const stateChangedCallback = (event) => {
       instance.stateChanged(event);
-    });
+    };
+    this.callback = stateChangedCallback;
+  }
+
+  /**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('stateChanged', this.callback);
+  }
+
+  /**
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener('stateChanged', this.callback);
   }
 
   /**

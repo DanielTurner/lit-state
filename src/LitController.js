@@ -64,7 +64,6 @@ export class LitController extends LitElement {
     const savedState = JSON.parse(this.storage.getItem('state'));
     if (savedState) {
       this.state = savedState;
-      this.state = savedState;
     }
 
     this.changedTypes = Object.keys(this.state);

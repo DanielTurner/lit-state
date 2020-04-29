@@ -1,7 +1,7 @@
 {
   "name": "@danielturner/lit-state",
   "_spec": "@danielturner/lit-state",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lit-state a lightweight state management solution",
   "author": "Daniel Turner",
   "license": "MIT",
