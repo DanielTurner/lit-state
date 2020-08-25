@@ -90,3 +90,25 @@ method to the following.
 ```html
   <lit-controller sessionStorage>
 ```
+
+## Reading state
+Since you are using the this.state object and lit element updates are processed 
+as part of the normal lit-element lifecycle.
+"LitElement-based components update asynchronously in response to observed 
+property changes..."
+[Lit Element Lifecycle](https://lit-element.polymer-project.org/guide/lifecycle)
+
+The short version is if you use 
+
+```javascript
+  return html`
+    <p>${this.state.message}</p>
+  `
+```
+The DOM will automatically update when the state changes are detected.
+
+## No, really reading state
+If you want to load the state within an element and it is not simply to output
+in a template, you might want to leverage the updated function from lit element.
+
+[Lit Element Lifecycle](https://lit-element.polymer-project.org/guide/lifecycle#upated)
